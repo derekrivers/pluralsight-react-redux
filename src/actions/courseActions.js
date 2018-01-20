@@ -20,8 +20,9 @@ export function loadCourses() {
         return courseApi.getAllCourses().then(courses => {
             dispatch(loadCoursesSuccess(courses));
         }).catch(error => {
-            throw(error);
-        });
+          dispatch(ajaxCallError(error));
+          throw(error);
+      });
     };
 }
 
