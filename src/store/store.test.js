@@ -6,6 +6,7 @@ import * as courseActions from '../actions/courseActions';
 
 describe('Store', function() {
   it('Should handle creating courses', function() {
+
     // arrange
     const store = createStore(rootReducer, initialState);
     const course = { title: "Clean Code"};
