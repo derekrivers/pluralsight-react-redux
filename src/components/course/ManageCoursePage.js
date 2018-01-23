@@ -42,6 +42,21 @@ export class ManageCoursePage extends React.Component {
         formIsValid = false
       }
 
+      if(this.state.course.authorId === ''){
+          errors.authorId = "Please select an author"
+          formIsValid = false
+      }
+
+      if(this.state.course.category === ''){
+        errors.category = 'Category is a required field.'
+        formIsValid = false
+      } 
+
+      if(this.state.course.length === ''){
+        errors.length = 'Length is a required field.'
+        formIsValid = false
+      } 
+
       this.setState({errors: errors})
       return formIsValid
     }
@@ -107,8 +122,6 @@ function mapStateTpProps(state, ownProps) {
     if(courseId && state.courses.length > 0) {
         course = getCourseById(state.courses, courseId)
     }
-
-
 
     return {
         course: course,

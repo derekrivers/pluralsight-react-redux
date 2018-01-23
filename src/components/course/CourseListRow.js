@@ -1,6 +1,7 @@
 /*eslint-disable react/jsx-no-bind */
 import React, {PropTypes} from 'react'
 import {Link} from 'react-router'
+import toastr from 'toastr'
 
 class CourseListRow extends React.Component {
     constructor(props,context) {
@@ -14,6 +15,7 @@ class CourseListRow extends React.Component {
     deleteCourse(courseId) {
         this.setState({deleting: true})
         this.props.onDelete(courseId)
+
     }
 
     render() {

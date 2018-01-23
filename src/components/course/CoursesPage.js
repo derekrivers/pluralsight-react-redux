@@ -22,10 +22,12 @@ class CoursesPage extends React.Component {
         this.setState({deleting: true})
         this.props.actions.deleteCourse(courseId).then(()=>{
             this.setState({deleting: false})
+            toastr.success('Course deleted')
         })
         .catch(error => {
             toastr.error(error)
             this.setState({deleting: false})
+            toastr.error('Course deletion failed')
         })
     }
 
