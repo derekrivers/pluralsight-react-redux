@@ -1,4 +1,4 @@
-import React, {PropTypes} from 'react';
+import React, {PropTypes} from 'react'
 
 const SelectInput = ({name, label, onChange, defaultOption, value, error, options}) => {
     return (
@@ -13,15 +13,15 @@ const SelectInput = ({name, label, onChange, defaultOption, value, error, option
                     <option value="">{defaultOption}</option>
                     {
                         options.map((option) => {
-                            return <option key={option.value} value={option.value}>{option.text}</option>;
+                            return <option key={option.value} value={option.value}>{option.text}</option>
                         })
                     }
                 </select>
                 {error && <div className="alert alert-danger">{error}</div>}
             </div>
         </div>
-    );
-};
+    )
+}
 
 SelectInput.propTypes = {
     name: PropTypes.string.isRequired,
@@ -31,6 +31,6 @@ SelectInput.propTypes = {
     value: PropTypes.string,
     error: PropTypes.string,
     options: PropTypes.arrayOf(PropTypes.object)
-};
+}
 
-export default SelectInput;
+export default SelectInput

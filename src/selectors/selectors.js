@@ -3,6 +3,6 @@ export function authorsFormattedForDropdown(authors) {
     return {
       value: author.id,
       text: author.firstName + ' ' + author.lastName
-    };
-  });
+    }
+  })
 }

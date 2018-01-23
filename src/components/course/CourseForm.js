@@ -1,6 +1,6 @@
-import React, {PropTypes} from 'react';
-import TextInput from '../common/TextInput';
-import SelectInput from '../common/SelectInput';
+import React, {PropTypes} from 'react'
+import TextInput from '../common/TextInput'
+import SelectInput from '../common/SelectInput'
 
 const CourseForm = ({course, allAuthors, onSave, onChange, saving, errors}) => {
     return (
@@ -45,8 +45,8 @@ const CourseForm = ({course, allAuthors, onSave, onChange, saving, errors}) => {
                 onClick={onSave}/>
 
         </form>
-    );
-};
+    )
+}
 
 CourseForm.propTypes = {
     course: PropTypes.object.isRequired,
@@ -55,6 +55,6 @@ CourseForm.propTypes = {
     onChange: PropTypes.func.isRequired,
     saving: PropTypes.bool,
     errors: PropTypes.object
-};
+}
 
-export default CourseForm;
+export default CourseForm

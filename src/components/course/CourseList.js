@@ -1,7 +1,8 @@
-import React, {PropTypes} from 'react';
-import CourseListRow from './CourseListRow';
+import React, {PropTypes} from 'react'
+import CourseListRow from './CourseListRow'
 
 const CourseList = ({courses, onDelete}) => {
+    
     return(
         <table className="table">
         <thead>
@@ -19,12 +20,13 @@ const CourseList = ({courses, onDelete}) => {
         )}
         </tbody>
         </table>
-    );
-};
+    )
+}
 
 CourseList.propTypes = {
     courses: PropTypes.array.isRequired,
     onDelete: PropTypes.func.isRequired
-};
 
-export default CourseList;
+}
+
+export default CourseList
