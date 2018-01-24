@@ -7,8 +7,7 @@ const AuthorList = ({authors}) => {
         <table className="table">
         <thead>
             <tr>
-                <th>First Name</th>
-                <th>Last Name</th>
+                <th>Name</th>
             </tr>
         </thead>
         <tbody>
@@ -20,9 +19,7 @@ const AuthorList = ({authors}) => {
 }
 
 AuthorList.propTypes = {
-    authors: PropTypes.array.isRequired,
-    onDelete: PropTypes.func.isRequired
-
+    authors: PropTypes.array.isRequired
 }
 
 export default AuthorList

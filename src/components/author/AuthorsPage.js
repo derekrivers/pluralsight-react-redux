@@ -1,7 +1,7 @@
 import React, {PropTypes} from 'react'
 import { connect } from 'react-redux'
 import * as authorActions from '../../actions/authorActions'
-import { bindActionCreators} from 'redux'
+import {bindActionCreators} from 'redux'
 import AuthorList from './AuthorList'
 import {browserHistory} from 'react-router'
 import toastr from 'toastr'
@@ -10,13 +10,23 @@ import toastr from 'toastr'
 class AuthorsPage extends React.Component {
     constructor(props,context) {
         super(props, context)
+
+        this.redirectToAddAuthorPage = this.redirectToAddAuthorPage.bind(this)
+    }
+
+    redirectToAddAuthorPage() {
+        browserHistory.push('/author')
     }
 
     render() {
         const {authors} = this.props
         return (
             <div>
-                <h1>Authors</h1>
+                 <h1>Authors ({authors.length})</h1>
+                <input type="submit"
+                       value="Add Author"
+                       className="btn btn-primary"
+                       onClick={this.redirectToAddAuthorPage}/>
                 <AuthorList authors={authors}/>
             </div>
         )

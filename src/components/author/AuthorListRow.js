@@ -17,8 +17,7 @@ class AuthorListRow extends React.Component {
 
         return(
             <tr>
-                <td>{author.firstName}</td>
-                <td>{author.lastName}</td>
+                <td><Link to={'/author/' + author.id}>{author.firstName} {author.lastName}</Link></td>
             </tr>
         )
     }

@@ -5,6 +5,7 @@ import { bindActionCreators} from 'redux'
 import CourseList from './CourseList'
 import {browserHistory} from 'react-router'
 import toastr from 'toastr'
+import _ from 'lodash'
 
 class CoursesPage extends React.Component {
     constructor(props,context) {
@@ -35,12 +36,12 @@ class CoursesPage extends React.Component {
         const {courses} = this.props
         return (
             <div>
-                <h1>Courses</h1>
+                <h1>Courses ({courses.length})</h1>
                 <input type="submit"
                        value="Add Course"
                        className="btn btn-primary"
                        onClick={this.redirectToAddCoursePage}/>
-                <CourseList courses={courses} onDelete={this.deleteCourse} />
+               {courses.length > 0 && <CourseList courses={courses} onDelete={this.deleteCourse} />}
                     
             </div>
         )
@@ -54,8 +55,10 @@ CoursesPage.propTypes = {
 }
 
 function mapStateToProps(state, ownProps) {
+    let orderedCourses = _.orderBy(state.courses, ['authorId'] ,['asc'])
+
     return {
-        courses: state.courses
+        courses: orderedCourses
     }
 }
 
