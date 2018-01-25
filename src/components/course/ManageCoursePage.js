@@ -4,7 +4,7 @@ import {bindActionCreators} from 'redux'
 import * as courseActions from '../../actions/courseActions'
 import CourseForm from './CourseForm'
 import {authorsFormattedForDropdown} from '../../selectors/selectors'
-import toastr from 'toastr'
+
 
 export class ManageCoursePage extends React.Component {
     constructor(props, context) {
@@ -71,7 +71,6 @@ export class ManageCoursePage extends React.Component {
         this.props.actions.saveCourse(this.state.course)
             .then(()=> this.redirect())
             .catch(error => {
-                toastr.error(error)
                 this.setState({saving: false})
             })
 
@@ -79,7 +78,6 @@ export class ManageCoursePage extends React.Component {
 
     redirect() {
         this.setState({saving: false})
-        toastr.success('Course saved')
         this.context.router.push('/courses')
     }
 
@@ -103,17 +101,13 @@ ManageCoursePage.propTypes = {
     actions: PropTypes.object.isRequired
 }
 
-ManageCoursePage.contextTypes = {
-    router: PropTypes.object
-}
-
 function getCourseById(courses, id) {
     const course = courses.filter(course => course.id == id)
     if(course.length) return course[0]
     return null
 }
 
-function mapStateTpProps(state, ownProps) {
+function mapStateToProps(state, ownProps) {
     
     const courseId = ownProps.params.id
 
@@ -135,4 +129,4 @@ function mapDispatchToProps(dispatch) {
     }
 }
 
-export default connect(mapStateTpProps, mapDispatchToProps)(ManageCoursePage)
+export default connect(mapStateToProps, mapDispatchToProps)(ManageCoursePage)

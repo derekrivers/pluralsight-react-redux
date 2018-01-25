@@ -4,7 +4,6 @@ import * as authorActions from '../../actions/authorActions'
 import {bindActionCreators} from 'redux'
 import AuthorList from './AuthorList'
 import {browserHistory} from 'react-router'
-import toastr from 'toastr'
 
 
 class AuthorsPage extends React.Component {

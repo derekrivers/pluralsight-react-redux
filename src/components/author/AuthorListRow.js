@@ -1,7 +1,6 @@
 /*eslint-disable react/jsx-no-bind */
 import React, {PropTypes} from 'react'
 import {Link} from 'react-router'
-import toastr from 'toastr'
 
 class AuthorListRow extends React.Component {
     constructor(props,context) {

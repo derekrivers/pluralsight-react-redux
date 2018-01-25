@@ -3,7 +3,7 @@ import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
 import * as authorActions from '../../actions/authorActions'
 import AuthorForm from './AuthorForm'
-import toastr from 'toastr'
+
 
 export class AuhtorCoursePage extends React.Component {
     constructor(props, context) {
@@ -60,7 +60,6 @@ export class AuhtorCoursePage extends React.Component {
         this.props.actions.saveAuthor(this.state.author)
             .then(()=> this.redirect())
             .catch(error => {
-                toastr.error(error)
                 this.setState({saving: false})
             })
 
@@ -68,7 +67,6 @@ export class AuhtorCoursePage extends React.Component {
 
     redirect() {
         this.setState({saving: false})
-        toastr.success('Author saved')
         this.context.router.push('/authors')
     }
 

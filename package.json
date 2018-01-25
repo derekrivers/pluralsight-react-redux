@@ -22,13 +22,13 @@
   "license": "MIT",
   "dependencies": {
     "babel-polyfill": "6.8.0",
-    "bootstrap": "3.3.6",
-    "jquery": "2.2.3",
     "lodash": "^4.17.4",
-    "react": "15.0.2",
-    "react-dom": "15.0.2",
-    "react-redux": "4.4.5",
-    "react-router": "2.4.0",
+    "material-ui": "^0.20.0",
+    "prop-types": "^15.6.0",
+    "react": "^15.3.0",
+    "react-dom": "^15.3.0",
+    "react-redux": "^4.4.5",
+    "react-router": "^2.8.1",
     "react-router-redux": "4.0.4",
     "redux": "3.5.2",
     "redux-thunk": "2.0.1",
@@ -75,6 +75,6 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/coryhouse/pluralsight-redux-starter"
+    "url": "https://github.com/derekrivers/pluralsight-react-redux"
   }
 }

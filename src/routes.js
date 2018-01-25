@@ -1,6 +1,6 @@
 import React from 'react'
-import { Route, IndexRoute } from 'react-router'
-import Layout from './components/Layout'
+import {Route, IndexRoute } from 'react-router'
+import Root from './components/theme/Root'
 import HomePage from './components/home/HomePage'
 import CoursesPage from './components/course/CoursesPage'
 import ManageCoursePage from './components/course/ManageCoursePage' //eslint-disable-line import/no-named-as-default
@@ -10,7 +10,7 @@ import ManageAuthorPage from './components/author/ManageAuthorPage'
 import NotFound from './components/common/NotFound'
 
 export default (
-    <Route path="/" component={Layout}>
+    <Route path="/" component={Root}>
         <IndexRoute component={HomePage}/>
         <Route path="/courses" component={CoursesPage}/>
         <Route path="/course" component={ManageCoursePage}/>
