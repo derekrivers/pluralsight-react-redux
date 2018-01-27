@@ -22,10 +22,12 @@
   "license": "MIT",
   "dependencies": {
     "babel-polyfill": "6.8.0",
+    "enzyme": "^2.2.0",
     "lodash": "^4.17.4",
     "material-ui": "^0.20.0",
     "prop-types": "^15.6.0",
     "react": "^15.3.0",
+    "react-addons-test-utils": "^15.0.2",
     "react-dom": "^15.3.0",
     "react-redux": "^4.4.5",
     "react-router": "^2.8.1",

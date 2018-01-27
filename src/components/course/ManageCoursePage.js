@@ -1,10 +1,10 @@
-import React, {PropTypes} from 'react'
+import React from 'react'
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
 import * as courseActions from '../../actions/courseActions'
 import CourseForm from './CourseForm'
 import {authorsFormattedForDropdown} from '../../selectors/selectors'
-
+import PropTypes from 'prop-types'
 
 export class ManageCoursePage extends React.Component {
     constructor(props, context) {
@@ -17,6 +17,7 @@ export class ManageCoursePage extends React.Component {
         }
 
         this.updateCourseState = this.updateCourseState.bind(this)
+        this.updateCourseAuthor = this.updateCourseAuthor.bind(this)
         this.saveCourse = this.saveCourse.bind(this)
     }
 
@@ -24,6 +25,12 @@ export class ManageCoursePage extends React.Component {
         if(this.props.course.id != nextProps.course.id) {
             this.setState({course: Object.assign({}, nextProps.course)})
         }
+    }
+
+    updateCourseAuthor(event, index, value){
+      let course = Object.assign({}, this.state.course)
+      course.authorId = value
+      return this.setState({course: course})
     }
 
     updateCourseState(event) {
@@ -50,12 +57,12 @@ export class ManageCoursePage extends React.Component {
       if(this.state.course.category === ''){
         errors.category = 'Category is a required field.'
         formIsValid = false
-      } 
+      }
 
       if(this.state.course.length === ''){
         errors.length = 'Length is a required field.'
         formIsValid = false
-      } 
+      }
 
       this.setState({errors: errors})
       return formIsValid
@@ -86,6 +93,7 @@ export class ManageCoursePage extends React.Component {
             <CourseForm
                 allAuthors={this.props.authors}
                 onChange={this.updateCourseState}
+                onChangeAuthor={this.updateCourseAuthor}
                 onSave={this.saveCourse}
                 course={this.state.course}
                 errors={this.state.errors}
@@ -93,6 +101,10 @@ export class ManageCoursePage extends React.Component {
             />
         )
     }
+}
+
+ManageCoursePage.contextTypes = {
+  router: PropTypes.object
 }
 
 ManageCoursePage.propTypes = {
@@ -108,7 +120,7 @@ function getCourseById(courses, id) {
 }
 
 function mapStateToProps(state, ownProps) {
-    
+
     const courseId = ownProps.params.id
 
     let course = {id: '', watchHref: '', title: '', authorId: '', length: '', category:''}

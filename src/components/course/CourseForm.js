@@ -1,48 +1,70 @@
-import React, {PropTypes} from 'react'
-import TextInput from '../common/TextInput'
+import React from 'react'
+//import TextInput from '../common/TextInput'
 import SelectInput from '../common/SelectInput'
+import TextField from 'material-ui/TextField'
+import RaisedButton from 'material-ui/RaisedButton'
+import SelectField from 'material-ui/SelectField'
+import MenuItem from 'material-ui/MenuItem'
+import PropTypes from 'prop-types'
+const style = {
+  margin: 12
+}
 
-const CourseForm = ({course, allAuthors, onSave, onChange, saving, errors}) => {
+const CourseForm = ({course, allAuthors, onSave, onChange, onChangeAuthor, saving, errors}) => {
     return (
-      
+
         <form>
-            <h1>Manage Course</h1>
-            <TextInput
+            <h2>Manage Course</h2>
+            <div>
+            <TextField
                 name="title"
-                label="Title"
+                hintText="Title"
                 value={course.title}
                 onChange={onChange}
-                error={errors.title}/>
+                errorText={errors.title}
+                floatingLabelText="Title"/>
+          <br />
 
-            <SelectInput
-                name="authorId"
-                label="Author"
-                value={course.authorId}
-                defaultOption="Select Author"
-                options={allAuthors}
-                onChange={onChange}
-                error={errors.authorId}/>
+          <SelectField
+              floatingLabelText="Select Author"
+              value={course.authorId}
+              onChange={onChangeAuthor}
+              errorText={errors.authorId}>
+              {allAuthors.map((author)=>{return (<MenuItem
 
-             <TextInput
+                key={author.value}
+                value={author.value}
+                primaryText={author.text}/>
+              )})
+              }
+        </SelectField>
+          <br/>
+             <TextField
                 name="category"
-                label="Category"
+                hintText="Category"
                 value={course.category}
                 onChange={onChange}
-                error={errors.category}/>
-            
-            <TextInput
+                errorText={errors.category}
+                floatingLabelText="Category"/>
+        <br />
+            <TextField
                 name="length"
-                label="Length"
+                hintText="Length"
                 value={course.length}
                 onChange={onChange}
-                error={errors.length}/>
-            
-            <input
-                type="submit"
-                disabled={saving}
-                value={saving ? 'Saving...' : 'Save'}
-                className="btn btn-primary"
-                onClick={onSave}/>
+                errorText={errors.length}
+                floatingLabelText="Length"/>
+          <br />
+            <RaisedButton label={saving ? 'Saving...' : 'Save'}
+              type="submit"
+              primary={true}
+              disabled={saving}
+              onClick={onSave}/>
+            </div>
+
+
+
+
 
         </form>
     )
@@ -53,6 +75,7 @@ CourseForm.propTypes = {
     allAuthors: PropTypes.array,
     onSave: PropTypes.func.isRequired,
     onChange: PropTypes.func.isRequired,
+    onChangeAuthor : PropTypes.func.isRequired,
     saving: PropTypes.bool,
     errors: PropTypes.object
 }
