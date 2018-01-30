@@ -2,14 +2,18 @@ import React, { PropTypes } from 'react'
 import Header from './common/Header'
 import {connect} from 'react-redux'
 
+
+
 class Layout extends React.Component {
    
     render() {
         return (
-            <div className="container-fluid">
-                <Header loading={this.props.loading}/>
-                {this.props.children}
-            </div>
+
+                <div className="container-fluid">
+                    <Header loading={this.props.loading}/>
+                    {this.props.children}
+                </div>
+
         )
     }
 }

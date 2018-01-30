@@ -11,8 +11,9 @@ import MyBottomNavigation from '../material-ui/MyBottomNavigation'
 
 const style = {
     padding: 10,
-    height: '85vh'
-
+    height: '85vh',
+    display: 'flex',
+    justifyContent: "center"
   }
 
 
@@ -24,8 +25,6 @@ class Root extends React.Component {
             route: Object.assign({}, this.props.route)
         }
     }
-
-    
     render() {
         const {route} = this.props
         return (

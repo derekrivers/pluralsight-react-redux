@@ -1,52 +1,59 @@
 import React from 'react'
-//import TextInput from '../common/TextInput'
 import SelectInput from '../common/SelectInput'
 import TextField from 'material-ui/TextField'
 import RaisedButton from 'material-ui/RaisedButton'
 import SelectField from 'material-ui/SelectField'
 import MenuItem from 'material-ui/MenuItem'
 import PropTypes from 'prop-types'
+
 const style = {
-  margin: 12
+    textAlign: 'left'
 }
 
 const CourseForm = ({course, allAuthors, onSave, onChange, onChangeAuthor, saving, errors}) => {
     return (
-
         <form>
             <h2>Manage Course</h2>
+            
             <div>
+
             <TextField
                 name="title"
                 hintText="Title"
                 value={course.title}
                 onChange={onChange}
                 errorText={errors.title}
+                fullWidth={false}
                 floatingLabelText="Title"/>
-          <br />
+            <br />
 
-          <SelectField
-              floatingLabelText="Select Author"
-              value={course.authorId}
-              onChange={onChangeAuthor}
-              errorText={errors.authorId}>
-              {allAuthors.map((author)=>{return (<MenuItem
+            <SelectField
+                style={style}
+                floatingLabelText="Select Author"
+                value={course.authorId}
+                onChange={onChangeAuthor}
+                errorText={errors.authorId}>
+                {allAuthors.map((author)=>{return (<MenuItem
 
                 key={author.value}
                 value={author.value}
                 primaryText={author.text}/>
-              )})
-              }
-        </SelectField>
-          <br/>
-             <TextField
-                name="category"
-                hintText="Category"
-                value={course.category}
-                onChange={onChange}
-                errorText={errors.category}
-                floatingLabelText="Category"/>
-        <br />
+                )})
+                }
+            </SelectField>
+
+            <br/>
+
+            <TextField
+            name="category"
+            hintText="Category"
+            value={course.category}
+            onChange={onChange}
+            errorText={errors.category}
+            floatingLabelText="Category"/>
+
+            <br/>
+
             <TextField
                 name="length"
                 hintText="Length"
@@ -54,19 +61,14 @@ const CourseForm = ({course, allAuthors, onSave, onChange, onChangeAuthor, savin
                 onChange={onChange}
                 errorText={errors.length}
                 floatingLabelText="Length"/>
-          <br />
+            <br/>
             <RaisedButton label={saving ? 'Saving...' : 'Save'}
-              type="submit"
-              primary={true}
-              disabled={saving}
-              onClick={onSave}/>
-            </div>
-
-
-
-
-
-        </form>
+                type="submit"
+                primary={true}
+                disabled={saving}
+                onClick={onSave}/>
+        </div>
+    </form>
     )
 }
 

@@ -4,7 +4,7 @@ import * as authorActions from '../../actions/authorActions'
 import {bindActionCreators} from 'redux'
 import AuthorList from './AuthorList'
 import {browserHistory} from 'react-router'
-
+import RaisedButton from 'material-ui/RaisedButton'
 
 class AuthorsPage extends React.Component {
     constructor(props,context) {
@@ -22,9 +22,9 @@ class AuthorsPage extends React.Component {
         return (
             <div>
                  <h1>Authors ({authors.length})</h1>
-                <input type="submit"
-                       value="Add Author"
-                       className="btn btn-primary"
+                <RaisedButton type="submit"
+                       label="Add Author"
+                       primary={true}
                        onClick={this.redirectToAddAuthorPage}/>
                 <AuthorList authors={authors}/>
             </div>

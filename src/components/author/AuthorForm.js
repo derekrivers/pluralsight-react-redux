@@ -1,31 +1,31 @@
 import React, {PropTypes} from 'react'
-import TextInput from '../common/TextInput'
-
+import TextField from 'material-ui/TextField'
+import RaisedButton from 'material-ui/RaisedButton'
 
 const AuthorForm = ({author, onSave, onChange, saving, errors}) => {
     return (
-      
         <form>
             <h1>Manage Author</h1>
-            <TextInput
+            <TextField
                 name="firstName"
-                label="First Name"
+                hintText="Firstname"
                 value={author.firstName}
                 onChange={onChange}
-                error={errors.firstName}/>
-
-             <TextInput
+                errorText={errors.firstName}
+                floatingLabelText="Firstname"/>
+                <br/>
+             <TextField
                 name="lastName"
-                label="Last Name"
+                hintText="Lastname"
                 value={author.lastName}
                 onChange={onChange}
-                error={errors.firstName}/>
-
-            <input
+                errorText={errors.firstName}
+                floatingLabelText="Lastname"/>
+            <br/>
+             <RaisedButton label={saving ? 'Saving...' : 'Save'}
                 type="submit"
+                primary={true}
                 disabled={saving}
-                value={saving ? 'Saving...' : 'Save'}
-                className="btn btn-primary"
                 onClick={onSave}/>
         </form>
     )

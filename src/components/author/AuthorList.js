@@ -1,20 +1,27 @@
 import React, {PropTypes} from 'react'
 import AuthorListRow from './AuthorListRow'
+import {
+    Table,
+    TableBody,
+    TableHeader,
+    TableHeaderColumn,
+    TableRow
+  } from 'material-ui/Table'
 
 const AuthorList = ({authors}) => {
     
     return(
-        <table className="table">
-        <thead>
-            <tr>
-                <th>Name</th>
-            </tr>
-        </thead>
-        <tbody>
+        <Table showCheckboxes={false} multiSelectable={false}>
+           <TableHeader displaySelectAll={false} adjustForCheckbox={false}>
+            <TableRow>
+                <TableHeaderColumn>Name</TableHeaderColumn>
+            </TableRow>
+        </TableHeader>
+        <TableBody>
             {authors.map(author => <AuthorListRow key={author.id} author={author}/>
         )}
-        </tbody>
-        </table>
+        </TableBody>
+        </Table>
     )
 }
 

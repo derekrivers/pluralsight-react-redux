@@ -1,8 +1,10 @@
-import React, {PropTypes} from 'react'
+import React from 'react'
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
 import * as authorActions from '../../actions/authorActions'
 import AuthorForm from './AuthorForm'
+import Snackbar from 'material-ui/Snackbar';
+import PropTypes from 'prop-types'
 
 
 export class AuhtorCoursePage extends React.Component {
@@ -13,6 +15,7 @@ export class AuhtorCoursePage extends React.Component {
             author: Object.assign({}, this.props.author),
             errors: {},
             saving: false
+
         }
 
         this.updateAuthorState = this.updateAuthorState.bind(this)
@@ -72,15 +75,16 @@ export class AuhtorCoursePage extends React.Component {
 
     render() {
         return (
-            <AuthorForm
-                onChange={this.updateAuthorState}
-                onSave={this.saveAuthor}
-                author={this.state.author}
-                errors={this.state.errors}
-                saving={this.state.saving}
-            />
-        )
-    }
+            <div>
+                <AuthorForm
+                    onChange={this.updateAuthorState}
+                    onSave={this.saveAuthor}
+                    author={this.state.author}
+                    errors={this.state.errors}
+                    saving={this.state.saving}
+                />
+            </div>
+        )}
 }
 
 AuhtorCoursePage.propTypes = {

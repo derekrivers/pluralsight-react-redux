@@ -5,14 +5,21 @@ import { bindActionCreators} from 'redux'
 import CourseList from './CourseList'
 import {browserHistory} from 'react-router'
 import _ from 'lodash'
+import RaisedButton from 'material-ui/RaisedButton'
+import Snackbar from 'material-ui/Snackbar'
 
 class CoursesPage extends React.Component {
     constructor(props,context) {
         
         super(props, context)
 
+        this.state = {
+            snackBarPopped : false
+        }
+
         this.redirectToAddCoursePage = this.redirectToAddCoursePage.bind(this)
         this.deleteCourse = this.deleteCourse.bind(this)
+        this.handleSnackbarClose = this.handleSnackbarClose.bind(this)
     }
 
     redirectToAddCoursePage() {
@@ -22,11 +29,15 @@ class CoursesPage extends React.Component {
     deleteCourse(courseId) {
         this.setState({deleting: true})
         this.props.actions.deleteCourse(courseId).then(()=>{
-            this.setState({deleting: false})
+            this.setState({deleting: false, snackBarPopped: true})
         })
         .catch(error => {
             this.setState({deleting: false})
         })
+    }
+
+    handleSnackbarClose() {
+        this.setState({snackBarPopped: false})
     }
 
     render() {
@@ -34,12 +45,16 @@ class CoursesPage extends React.Component {
         return (
             <div>
                 <h1>Courses ({courses.length})</h1>
-                <input type="submit"
-                       value="Add Course"
-                       className="btn btn-primary"
+                <RaisedButton type="submit"
+                       label="Add Course"
+                       primary={true}
                        onClick={this.redirectToAddCoursePage}/>
                {courses.length > 0 && <CourseList courses={courses} onDelete={this.deleteCourse} />}
-                    
+               <Snackbar
+                open={this.state.snackBarPopped}
+                message="Course Deleted"
+                autoHideDuration={4000}
+                onRequestClose={this.handleSnackbarClose}/>
             </div>
         )
     }
